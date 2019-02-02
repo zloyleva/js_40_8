@@ -4,12 +4,10 @@ import element from '../Card';
 export default function main() {
     const div = getHtmlObject("div");
 
-
-
     const row = div.createHtmlElement(
-        "row",
+        "row my-5",
         null,
-        [element]
+        element
     );
 
     return div.createHtmlElement(
