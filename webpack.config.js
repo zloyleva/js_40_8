@@ -1,4 +1,4 @@
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -12,18 +12,14 @@ module.exports = {
 		port: 3000
 
 	},
-	// module: {
-	// 	rules: [
-	// 		{
-	// 			test: /\.(scss|css)$/,
-	// 			use: ExtractTextPlugin.extract({
-	// 				fallback: 'style-loader',
-	// 				use:['css-loader', 'sass-loader']
-	// 			})
-	// 		}
-	// 	]
-	// },
-	// plugins:[
-	// 	new ExtractTextPlugin('style.css')
-	// ]
+	module: {
+		rules: [{
+			test: /\.(scss|css)$/,
+			use: [
+				"style-loader", // creates style nodes from JS strings
+				"css-loader", // translates CSS into CommonJS
+				"sass-loader" // compiles Sass to CSS, using Node Sass by default
+			]
+		}]
+	}
 };

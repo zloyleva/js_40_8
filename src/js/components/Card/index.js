@@ -1,6 +1,8 @@
 import getHtmlObject from "../../lib/FactoryHtml";
 import products from '../../products';
 
+import './style.scss';
+
 const limit = 100;
 
 const div = getHtmlObject("div");
@@ -21,7 +23,7 @@ const createCardElement = (product) => {
         ]
     );
     const cardLink = a.createHtmlElement(
-        "btn btn-primary",
+        "btn btn-primary add_to_card",
         null,
         "Add to cart"
     );
