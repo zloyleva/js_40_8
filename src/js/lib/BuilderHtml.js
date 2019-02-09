@@ -11,7 +11,7 @@ export default function BuilderHtml(tag) {
         }
 
         if(typeof content === "string"){
-            html.innerText = content;
+            html.innerHTML = content;
         }else if(Array.isArray(content)){
             content.map(el => (el instanceof Node?html.appendChild(el):""));
         }

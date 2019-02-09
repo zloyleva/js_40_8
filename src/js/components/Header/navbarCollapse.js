@@ -1,15 +1,21 @@
 import getHtmlObject from "../../lib/FactoryHtml";
 
+import './style.scss';
+
 const div = getHtmlObject("div");
 const a = getHtmlObject("a");
 const ul = getHtmlObject("ul");
 const li = getHtmlObject("li");
 
 const navLinks = [
-    {name: "Home", href: "/"},
-    {name: "Catalog", href: "#"},
-    {name: "Cart", href: "#"},
-    {name: "Contact", href: "#"},
+    {name: "Home", attr: [{name: "href", value: "/"}]},
+    {name: "Catalog", attr: [{name: "href", value: "/"}]},
+    {name: "Cart", attr: [
+        {name: "href", value: "/"},
+        {name: "id", value: "cart_nav"},
+        {name: "class", value: "nav-link d-flex align-items-center"},
+        ]},
+    {name: "Contact", attr: [{name: "href", value: "/"}]},
 ];
 
 const navItems = navLinks.map((el) =>
@@ -19,8 +25,8 @@ const navItems = navLinks.map((el) =>
         [
             a.createHtmlElement(
                 "nav-link",
-                [{name:"href", value:el.href}],
-                el.name
+                el.attr,
+                el.name == "Cart"?createCartText(el.name):el.name
             )
         ]
     )
@@ -34,3 +40,15 @@ const navbarCollapse = div.createHtmlElement(
 );
 
 export default navbarCollapse;
+
+function createCartText(name) {
+    let count = 0;
+    if(
+        localStorage.getItem("cart") &&
+        Array.isArray(JSON.parse(localStorage.getItem("cart")))
+    ){
+        count = JSON.parse(localStorage.getItem("cart")).length;
+    }
+
+    return `${name} <span class='badge badge-light'>${count}</span>`;
+}

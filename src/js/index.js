@@ -7,8 +7,14 @@ import main from './components/Main';
 const _header = header();
 const _main = main();
 
-// console.log(_header);
-// console.log(_main);
+const addToCart = new Event("addToCart");
+
+document.addEventListener("addToCart", () => {
+    console.log("Detected addToCart");
+
+    document.getElementById("cart_nav").innerHTML = `Cart <span class='badge badge-light'>${JSON.parse(localStorage.getItem("cart")).length}</span>`;
+
+});
 
 render("app", _header);
 render("app", _main);
@@ -36,5 +42,7 @@ if(
         });
 
         localStorage.setItem("cart",JSON.stringify(cart));
+
+        document.dispatchEvent(addToCart);
     }));
 
