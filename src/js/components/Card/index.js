@@ -1,6 +1,8 @@
 import getHtmlObject from "../../lib/FactoryHtml";
 import products from '../../products';
 
+import './style.scss';
+
 const limit = 100;
 
 const div = getHtmlObject("div");
