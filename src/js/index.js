@@ -3,6 +3,7 @@ console.log("App was load...");
 import render from './lib/renderHtml';
 import header from './components/Header';
 import main from './components/Main';
+import modal from './components/ModalWindow';
 
 import addToCartAction from './actions/addToCartAction';
 
@@ -20,6 +21,7 @@ document.addEventListener("addToCart", () => {
 
 render("app", _header);
 render("app", _main);
+render("app", modal);
 
 if(
     !localStorage.getItem("cart") ||
