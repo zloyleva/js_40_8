@@ -15,7 +15,9 @@ const addToCartEvent = new Event("addToCart");
 document.addEventListener("addToCart", () => {
     console.log("Detected addToCart");
 
-    document.getElementById("cart_nav").innerHTML = `Cart <span class='badge badge-light'>${JSON.parse(localStorage.getItem("cart")).length}</span>`;
+    document
+        .getElementById("cart_nav")
+        .innerHTML = `Cart <span class='badge badge-light'>${JSON.parse(localStorage.getItem("cart")).length}</span>`;
 
 });
 
