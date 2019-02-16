@@ -52,3 +52,12 @@ document.getElementById("cart_nav")
         }
 
     });
+
+$('#modalCart')
+    .on('hidden.bs.modal', function (e) {
+    console.log("hidden.bs.modal");
+
+    $('#modal-content-section')
+        .html("");
+
+});
