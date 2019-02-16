@@ -5,6 +5,8 @@ import header from './components/Header';
 import main from './components/Main';
 import modal from './components/ModalWindow';
 
+import createCardList from './components/CardItemsList'
+
 import addToCartAction from './actions/addToCartAction';
 
 const _header = header();
@@ -45,8 +47,8 @@ document.getElementById("cart_nav")
             Array.isArray(JSON.parse(localStorage.getItem("cart")))
         ){
            const cardItems = JSON.parse(localStorage.getItem("cart"));
-           // foo(cardItems);
+           // document.getElementById("modal-content-section")
+            console.log(createCardList(cardItems));
         }
 
     });
-
