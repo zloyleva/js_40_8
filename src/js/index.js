@@ -4,12 +4,15 @@ import render from './lib/renderHtml';
 import header from './components/Header';
 import main from './components/Main';
 import modal from './components/ModalWindow';
+import createCardElement from "./components/Card";
 
 
 import addToCartAction from './actions/addToCartAction';
 import showCardModalAction from './actions/showCardModalAction';
 import clearModalAction from './actions/clearModalAction';
 import initCardAction from './actions/initCardAction';
+
+import dataProducts from './products.json';
 
 const _header = header();
 const _main = main();
@@ -30,8 +33,14 @@ render("app", _main);
 render("app", modal);
 
 initCardAction();
-addToCartAction(addToCartEvent);
 showCardModalAction();
 clearModalAction();
 
 
+setTimeout(()=>{
+    const {products} = dataProducts;
+    document.getElementById("catalog").innerText = "";
+    products.map(el => render("catalog", createCardElement(el)));
+
+    addToCartAction(addToCartEvent);
+},4000);
