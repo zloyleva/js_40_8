@@ -10,7 +10,9 @@ const getDataForPaginationOnCurrentPage = (data,perPage, pageUrl) => {
 
     return {
         products: products.slice(start,end),
-        currentPage: currentPage
+        currentPage: currentPage,
+        total: products.length,
+        perPage: perPage
     }
 };
 
