@@ -5,7 +5,7 @@ import header from './components/Header';
 import main from './components/Main';
 import modal from './components/ModalWindow';
 import createCardElement from "./components/Card";
-
+import pagination from './components/Pagination';
 
 import addToCartAction from './actions/addToCartAction';
 import showCardModalAction from './actions/showCardModalAction';
@@ -44,5 +44,7 @@ fetchProducts(urlSearch, 6)
         document.getElementById("catalog").innerText = "";
         products.map(el => render("catalog", createCardElement(el)));
         addToCartAction(addToCartEvent);
+
+        render("pagination", pagination());
     })
     .catch(err => console.log(err));
