@@ -37,14 +37,12 @@ showCardModalAction();
 clearModalAction();
 
 const urlSearch = location.search;
-fetchProducts(urlSearch)
-    .then(data => console.log(data))
-// fetch("https://zloyleva.github.io/js_40_8/src/js/products.json")
-//     .then((res) => {return res.json()})
-//     .then(products => {
-//         // const {products} = response;
-//         document.getElementById("catalog").innerText = "";
-//         products.map(el => render("catalog", createCardElement(el)));
-//         addToCartAction(addToCartEvent);
-//     })
-//     .catch(err => console.log(err));
+
+fetchProducts(urlSearch, 6)
+    .then(data =>{
+        const {products} = data;
+        document.getElementById("catalog").innerText = "";
+        products.map(el => render("catalog", createCardElement(el)));
+        addToCartAction(addToCartEvent);
+    })
+    .catch(err => console.log(err));
